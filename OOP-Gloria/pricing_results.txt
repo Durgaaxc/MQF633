@@ -1,0 +1,48 @@
+Trade Type: BondTrade
+Price: 896.5
+----------------------
+Trade Type: BondTrade
+Price: 94.5
+----------------------
+Trade Type: BondTrade
+Price: 1176.5
+----------------------
+Trade Type: BondTrade
+Price: 1556.5
+----------------------
+Trade Type: TreeProduct
+Price: 652
+----------------------
+Trade Type: TreeProduct
+Price: 73.8296
+----------------------
+Trade Type: TreeProduct
+Price: 1
+----------------------
+Trade Type: TreeProduct
+Price: 0.700869
+----------------------
+Trade Type: TreeProduct
+Price: 652
+----------------------
+Trade Type: TreeProduct
+Price: 2.65029
+----------------------
+Trade Type: TreeProduct
+Price: 2.39852e-114
+----------------------
+Trade Type: TreeProduct
+Price: 0.0257076
+----------------------
+Trade Type: SwapTrade
+Price: -6.4496e+06
+----------------------
+Trade Type: SwapTrade
+Price: -1.27532e+07
+----------------------
+Trade Type: SwapTrade
+Price: -607856
+----------------------
+Trade Type: SwapTrade
+Price: -2.3259e+06
+----------------------
