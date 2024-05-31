@@ -63,3 +63,11 @@ int main()
   mkt1.Print();
 }
  
+ /*
+ task 1 loading market should really load from txt file right?
+ 
+ where is the rest of task?
+ Please out of one txt file with all infomration of market data, trade data, and trade pv
+ 
+ 
+ */
