@@ -5,14 +5,14 @@
 #include <ctime>
 #include <chrono>
 
-#include "Market.h"
+//#include "Market.h"
 #include "Pricer.h"
 #include "EuropeanTrade.h"
 #include "Bond.h"
 #include "Swap.h"
 #include "AmericanTrade.h"
-#include "Date.h"
-#include "Option.h"
+//#include "Date.h"
+//#include "Option.h"
 
 
 
@@ -22,9 +22,23 @@ void readFromFile(const string& fileName, string& outPut) {
     string lineText;
     ifstream MyReadFile(fileName);
     while (getline(MyReadFile, lineText)) {
-        outPut.append(lineText + "\n");  // Ensure each line is separated by a newline
+        outPut.append(lineText + ";");  // Ensure each line is separated by a newline
     }
     MyReadFile.close();
+}
+
+double BlackScholesPrice(const EuropeanOption& option, const Market& market) {
+    double S = market.getStockPrice("default_stock"); // Placeholder, replace with actual logic
+    double r = market.getInterestRate(option.GetExpiry());
+    double sigma = market.getVolatility(option.GetExpiry());
+    double T = (option.GetExpiry() - market.asOf) / 365.0;
+
+    double d1 = (std::log(S) + (r + 0.5 * sigma * sigma) * T) / (sigma * std::sqrt(T));
+    double d2 = d1 - sigma * std::sqrt(T);
+
+    // Assuming call option, replace with actual pricing formula as needed
+    double callPrice = S * std::exp(-r * T) * d1 - std::exp(-r * T) * d2;
+    return callPrice;
 }
 
 int main() {
@@ -162,7 +176,7 @@ int main() {
     // Compare pricing results
     for (auto europeanOption : europeanOptions) {
         double crrPrice = treePricer->Price(mkt, europeanOption);
-        double blackScholesPrice = BlackScholesPrice(static_cast<const Option*>(europeanOption), &mkt);
+        double blackScholesPrice = BlackScholesPrice(const_cast<EuropeanOption&>(*europeanOption), const_cast<Market&>(mkt));
 
         cout << "European Option Comparison:" << endl;
         cout << "CRR Binomial Tree Price: " << crrPrice << endl;

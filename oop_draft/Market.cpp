@@ -5,6 +5,49 @@
 
 using namespace std;
 
+namespace
+{
+    // for string delimiter
+    std::vector<std::string> split(std::string s, std::string delimiter) 
+    {
+        size_t pos_start = 0, pos_end, delim_len = delimiter.length();
+        std::string token;
+        std::vector<std::string> res;
+
+        while ((pos_end = s.find(delimiter, pos_start)) != std::string::npos) {
+            token = s.substr (pos_start, pos_end - pos_start);
+            pos_start = pos_end + delim_len;
+            res.push_back (token);
+        }
+
+        res.push_back (s.substr (pos_start));
+        return res;
+    };
+    
+    Date getTenorFromStr(const string& tenorStr, const Date& today)
+    {
+        if(tenorStr == "ON"){
+            return DateAddDay(today, 1);
+        }
+        else if(tenorStr =="1W"){
+            return DateAddDay(today, 7);
+        }
+        else if(tenorStr =="1M"){
+            return DateAddDay(today, 30);
+        }
+        else if(tenorStr =="1Y"){
+            return DateAddDay(today, 365);
+        }
+        else{
+            return today;
+        }
+        return today;
+    }
+
+} 
+// namespace
+
+
 void RateCurve::display() const {
     cout << "Rate curve: " << name << endl;
     for (size_t i = 0; i < tenors.size(); i++) {
@@ -15,19 +58,21 @@ void RateCurve::display() const {
 
 void RateCurve::addRate(Date tenor, double rate) {
     auto it = std::lower_bound(tenors.begin(), tenors.end(), tenor);
-    if (it != tenors.end() && *it == tenor) {
+    if (it != tenors.end() && *it == tenor) { // this line is wrong, there is no "==" behaviour for Date class object
         cerr << "Tenor already exists." << endl;
         return;
     }
-    tenors.insert(it, tenor);
-    rates.insert(rates.begin() + (it - tenors.begin()), rate);
+    tenors.push_back(tenor); // use tenor.push_back(tenor);
+    rates.push_back(rate); //use rates.push_back(rate);
 }
 
 double RateCurve::getRate(Date tenor) const {
-    if (tenors.empty() || tenor < tenors.front() || tenor > tenors.back()) {
-        cerr << "Invalid tenor." << endl;
-        return 0;
-    }
+    // if (tenors.empty() || tenor < tenors.front() || tenor > tenors.back()) {
+    //     cerr << "Invalid tenor." << endl;
+    //     return 0;
+    // }
+    //dont need this, if tenor is smaller than 1st one return first value, if tenor is later than last one return last value
+
     auto it = std::upper_bound(tenors.begin(), tenors.end(), tenor);
     if (it == tenors.begin()) {
         cerr << "Invalid tenor." << endl;
@@ -116,19 +161,35 @@ void Market::addStockPrice(const std::string& stockName, double price) {
 }
 
 void Market::updateInterestRateCurves(const std::string& curveData) {
-    istringstream iss(curveData);
-    string line;
-    while (getline(iss, line)) {
-        istringstream lineStream(line);
-        string curveName;
-        Date tenor;
-        double rate;
-        lineStream >> curveName >> tenor >> rate;
-        if (curves.find(curveName) == curves.end()) {
-            curves[curveName] = RateCurve(curveName);
-        }
-        curves[curveName].addRate(tenor, rate);
+    // istringstream iss(curveData);
+    // string line;
+    // while (getline(iss, line)) {
+    //     istringstream lineStream(line);
+    //     string curveName;
+    //     Date tenor;
+    //     double rate;
+    //     lineStream >> curveName >> tenor >> rate;
+    //     if (curves.find(curveName) == curves.end()) {
+    //         curves[curveName] = RateCurve(curveName);
+    //     }
+    //     curves[curveName].addRate(tenor, rate);
+    // }
+    vector<string> data = split(curveData, ";");
+    string name = data[0];
+    RateCurve curve(name);
+    for (size_t i = 1; i<data.size(); i++) {
+        string pair = data[i];
+        vector<string> pair_split = split(pair, ": ");
+        if (pair_split.size() ==1)
+            continue;
+        string tenor_ = pair_split[0];
+        string value_ = pair_split[1];
+        double rate_ = std::stod(value_);
+        auto tenor = getTenorFromStr(tenor_, this->asOf);
+        curve.addRate(tenor, rate_/100);
     }
+
+
 }
 
 void Market::updateVolatilityCurves(const std::string& volData) {

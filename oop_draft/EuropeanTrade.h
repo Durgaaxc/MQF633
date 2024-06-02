@@ -6,7 +6,7 @@
 #include "TreeProduct.h"
 #include "Payoff.h"
 #include "Types.h"
-#include "Option.h" // Include Option.h to use Date
+//#include "Option.h" // Include Option.h to use Date
 
 class EuropeanOption : public TreeProduct {
 public:

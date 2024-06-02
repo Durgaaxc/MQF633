@@ -13,15 +13,20 @@ public:
     Date(int y, int m, int d) : year(y), month(m), day(d) {};
     Date() : year(0), month(0), day(0) {};
 
-    bool operator<(const Date& other) const;
-    bool operator<=(const Date& other) const;
-    bool operator==(const Date& other) const;
-    bool operator!=(const Date& other) const;
-    bool operator>(const Date& other) const;
-    bool operator>=(const Date& other) const;
+    // bool operator<(const Date& other) const;
+    // bool operator<=(const Date& other) const;
+    // bool operator==(const Date& other) const;
+    // bool operator!=(const Date& other) const;
+    // bool operator>(const Date& other) const;
+    // bool operator>=(const Date& other) const;
+    void operator+(int days);
 };
 
 double operator-(const Date& d1, const Date& d2);
+Date DateAddDay(const Date& d1, int days);
+bool operator==(const Date& d1, const Date& d2);
+bool operator<(const Date& d1, const Date& d2);
+bool operator>(const Date& d1, const Date& d2);
 std::ostream& operator<<(std::ostream& os, const Date& date);
 std::istream& operator>>(std::istream& is, Date& date);
 
