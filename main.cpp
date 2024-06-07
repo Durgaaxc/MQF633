@@ -240,7 +240,7 @@ int main()
     }
     }
     //log pv details out in a file
-  resultFile << "Total NPV of the portfolio is: " << totalPV << endl;
+  resultFile << "Total PV of the portfolio is: " << totalPV << endl;
 
   //task 4, analyzing pricing result
   // a) compare CRR binomial tree result for an european option vs Black model
