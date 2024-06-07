@@ -56,4 +56,4 @@ Trade ID: 16. SwapTrade, Start Date of Contract: 2024 5 1
 , Maturity Date of Contract: 2094 1 1
 , Notional: 1908, Traded Rate: 0.09, Payment Frequency per year: 2, Current PV: 3723.93
 
-Total NPV of the portfolio is: 24671.7
+Total PV of the portfolio is: 24671.7
