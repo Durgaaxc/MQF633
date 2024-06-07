@@ -1,0 +1,59 @@
+Task 3 - Portfolio Net Present Value
+
+Trade ID: 1. BondTrade, Start Date of Bond: 2024 1 3
+, Maturity Date of Bond: 2034 1 1
+, Notional value: 1000, Traded Price: 103500, Current PV: 896.5
+
+Trade ID: 2. BondTrade, Start Date of Bond: 2024 2 1
+, Maturity Date of Bond: 2034 1 1
+, Notional value: 200, Traded Price: 21100, Current PV: 94.5
+
+Trade ID: 3. BondTrade, Start Date of Bond: 2024 5 1
+, Maturity Date of Bond: 2034 1 1
+, Notional value: 1300, Traded Price: 160550, Current PV: 1176.5
+
+Trade ID: 4. BondTrade, Start Date of Bond: 2024 3 1
+, Maturity Date of Bond: 2034 1 1
+, Notional value: 1700, Traded Price: 243950, Current PV: 1556.5
+
+Trade ID: 5. TreeProductEuropean Option, Option type: 0, Expiry Date: 2025 1 17
+, Strike price: 1000, Present Value: 2482.97
+
+Trade ID: 6. TreeProductEuropean Option, Option type: 1, Expiry Date: 2025 2 17
+, Strike price: 11000, Present Value: 7785.66
+
+Trade ID: 7. TreeProductEuropean Option, Option type: 2, Expiry Date: 2025 8 20
+, Strike price: 12000, Present Value: 0.0894313
+
+Trade ID: 8. TreeProductEuropean Option, Option type: 3, Expiry Date: 2025 1 19
+, Strike price: 13000, Present Value: 1
+
+Trade ID: 9. TreeProductEuropean Option, Option type: 0, Expiry Date: 2025 1 23
+, Strike price: 400, Present Value: 3026.01
+
+Trade ID: 10. TreeProductEuropean Option, Option type: 1, Expiry Date: 2025 1 24
+, Strike price: 100, Present Value: 0
+
+Trade ID: 11. TreeProductEuropean Option, Option type: 2, Expiry Date: 2025 1 25
+, Strike price: 100, Present Value: 0.990409
+
+Trade ID: 12. TreeProductEuropean Option, Option type: 3, Expiry Date: 2025 1 26
+, Strike price: 100, Present Value: 0
+
+Trade ID: 13. SwapTrade, Start Date of Contract: 2024 1 1
+, Maturity Date of Contract: 2094 1 1
+, Notional: 1040, Traded Rate: 0.05, Payment Frequency per year: 1, Current PV: 983.59
+
+Trade ID: 14. SwapTrade, Start Date of Contract: 2024 8 1
+, Maturity Date of Contract: 2094 1 1
+, Notional: 1023, Traded Rate: 0.06, Payment Frequency per year: 2, Current PV: 1985.24
+
+Trade ID: 15. SwapTrade, Start Date of Contract: 2024 6 1
+, Maturity Date of Contract: 2094 1 1
+, Notional: 1000, Traded Rate: 0.07, Payment Frequency per year: 1, Current PV: 958.219
+
+Trade ID: 16. SwapTrade, Start Date of Contract: 2024 5 1
+, Maturity Date of Contract: 2094 1 1
+, Notional: 1908, Traded Rate: 0.09, Payment Frequency per year: 2, Current PV: 3723.93
+
+Total NPV of the portfolio is: 24671.7
